@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} 
+
+    {% block content %}
+    <section class="sections random-product">
+      <div class="container-fluid">
+          <div class="container">
+              <div class="row">
+                  {% for product in product_list %} 
+                  <div class="col-md-4">
+                      <div class="card">
+                          <img class="card-img-top" src='{{product.img}}' alt="Card image cap">
+                          <div class="card-body">
+                              <h5 class="card-title">
+                                  <a href="#" class="text-dark">{{product.name}}</a>
+                              </h5>
+                          </div>
+                          <div class="card-footer">
+                              <div class="badge badge-danger float-right">-5%</div>
+                              <div class="float-left">
+                                  <a href="#" class="text-danger">{{product.price}}</a>
+                                  <br>
+                                  <small class="text-muted"><del>$179.99</del></small>
+                                  <!--  -->
+                                  
+                                  <a href="/add_to_cart/{{product.id}}"><button type="submit" class="btn btn-primary">Add To Cart</button </a>
+                                
+                                    <a href="#" class="btn btn-default" role="button">Description</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div><!--.col-->
+                  {% endfor %}
+              </div><!--.row-->
+
+          </div><!--.container-->
+      </div><!--.container-fluid-->
+      <br>
+      <br>
+      <br>
+      <a href="/product"><button class="checkout" align="center">Checkout</button></a>
+      <style>
+        .checkout{
+          background-color: white;
+          position: relative;
+          width: 1000px;
+          height: 50px;
+        }
+      </style>
+  </section>
+      {% endblock %}

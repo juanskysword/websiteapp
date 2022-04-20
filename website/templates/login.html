@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block title %}Welcome{% endblock %} {% block
+content %}
+<style>
+  .thumbnail {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    }
+    p1 {
+        font-weight: bold;
+        color: white;
+    }
+</style>
+
+<form method="POST">
+  <h3 align="center">Login</h3>
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      placeholder="Enter password"
+    />
+  </div>
+  <p>Not a member? <a href="/sign-up">Sign up</a></p>
+  <br />
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<br />
+<p1>Please Sign Up To Make a Order</p1>
+<h1>Products</h1>
+
+<div class="thumbnail">
+  <img
+    src="https://www.viper.com/images/products/feature/5305V.png"
+    alt="..."
+  />
+  <h3 style="text: bold">Viper CarAlarm Model 5305V</h3>
+  <img
+    src="https://m.media-amazon.com/images/I/61fntOSj8dL._AC_SL1500_.jpg"
+    width="540"
+    height="640"
+    alt="..."
+  />
+  <h3>Prestige APS25Z</h3>
+  <img
+    src="http://t1.gstatic.com/images?q=tbn:ANd9GcTmydwlA9x0yxq7mLIYr9qs-rRzV5HJUr_SwJoyOYG8dkBKYcC1"
+    width="540"
+    height="640"
+    alt="..."
+  />
+  <h3>DB3 Directechs</h3>
+</div>
+
+{% endblock %}

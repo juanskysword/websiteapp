@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<style>
+  .Schedule{
+    background-color: gray;
+    font-size: 40px;
+    margin-top: 20;
+  }
+  .map, .Schedule{
+    display: inline-block;
+  }
+  .slider{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+</style>
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+onload.apply 
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+</script>
+<body>
+<h1>Welcome </h1>
+<br>
+<p1>Hours and Location</p1> 
+<br>
+
+<div class="map">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.07466998439!2d-96.68560878361538!3d32.73720789331898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864ea308fc4e840d%3A0x16aef7e97d6b5d91!2sTamo%20Express%20Auto%20Alarms!5e0!3m2!1sen!2sus!4v1650293286137!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<div class="Schedule"
+<h2 align="center">Schedule</h2>
+<br>
+<p2>Monday 10am - 7pm</p2>
+<br>
+<p2>Tuesday 10am - 7pm</p2>
+<br>
+<p2>Wednesday 10am - 7pm</p2>
+<br>
+<p2>Thursday 10am - 7pm</p2>
+<br>
+<p2>Friday 10am - 7pm</p2>
+<br>
+<p2>Saturday 10am - 7pm</p2>
+</div>
+<br>
+<h2 align="center">Reviews</h2>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    {{ note.data }}
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST">
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+<br>
+<div class="slider">
+<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+<img class="mySlides" src="https://scontent-dfw5-1.xx.fbcdn.net/v/t39.30808-6/246262683_5156080237741871_1947692371754974350_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=e3f864&_nc_ohc=-qIAQLrjVbsAX_ueigS&_nc_ht=scontent-dfw5-1.xx&oh=00_AT_33HYCmpKHH-zqxEl_LWi84EkhCYLmnsoSt6lC0Xqc1w&oe=626260D5" style="width:80%">
+<img class="mySlides" src="https://scontent-dfw5-2.xx.fbcdn.net/v/t39.30808-6/273938850_5585737214776169_2314536830679545938_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=RRQxkHZetWEAX8MiAOQ&tn=TBVRMpW59p1wAmxD&_nc_ht=scontent-dfw5-2.xx&oh=00_AT-h8u3vcP9WCZRRk_r4cKUq0p_h87GvDJ6MXLVjp-4wWg&oe=62649F8D">
+<img class="mySlides" src="https://scontent-dfw5-1.xx.fbcdn.net/v/t1.6435-9/67730238_2907225995960651_8991543965803085824_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=174925&_nc_ohc=PW7M21BZ57cAX9f5z3Z&_nc_ht=scontent-dfw5-1.xx&oh=00_AT9az-Mt0xVBkxTgjJB_NQ5_dVLyCYHH6MYEBrbah7e5Vg&oe=6283D6C3">
+<img class="mySlides" src="img_forest.jpg">
+<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+</div>
+</body>
+{% endblock %}

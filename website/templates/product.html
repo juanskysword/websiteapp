@@ -1,0 +1,177 @@
+{% extends "base.html" %} {% block title %}product{% endblock %} 
+{% block content %}
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+<body>
+        <div class="row">
+          <div class="col-50">
+            <h3>Appointment</h3>
+            <h4>CASH Only</h4>
+            <label for="cname">Available Date</label>
+            <label>
+                <input type="date" name="Appointment request" required>
+              </label>
+              <label for="cname">Additional Information</label>
+              <div class="inline">
+                <ul class="list-group list-group-flush" id="notes">
+                    {% for note in user.notes %}
+                    <li class="list-group-item">
+                      {{ note.data }}
+                      <button type="button" class="close" onClick="deleteNote"({{ note.id }})">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  <form method="POST">
+                    <textarea name="note" id="note" class="form-control"></textarea>
+                    <br /> 
+                  </form>
+              </div>
+            </div>
+        </div>
+        <label>
+          <p>Approved Customers will Received Email or Phone Number Withing One day Buisness</p>
+        </label>
+        <input type="submit" value="Set Appointment" class="btn">
+        <h3>Client Information</h3>
+        <h4> If Information Is Incorrect, Please Update Information</h4>
+        {% for User in User_information %}
+            <label for="fname"><i class="fa fa-user"></i> First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder={{User.first_name}}>
+            <label for="fname"><i class="fa fa-user"></i> Last Name</label>
+            <input type="text" id="fname" name="lastname" placeholder="{{User.last_name}}">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder={{User.email}}>
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="{{User.address}}">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="{{User.city}}">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="{{User.state}}">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="{{User.zipcode}}">
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </form>
+    </div>
+  </div>
+  
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart
+        <span class="price" style="color:black">
+          <i class="fa fa-shopping-cart"></i>
+          <b>4</b>
+        </span>
+      </h4>
+      {% for order_product in Order %}
+      <p><a href="#">{{order_product.name}}</a> <span class="price">{{order_product.price}}</span></p>
+      {% endfor %}
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+</div>
+</body>
+<footer>
+    <br>
+</footer>
+<style>
+    .row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color:#6c757d;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid #6c757d;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: green;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: white;
+}
+
+span.price {
+  float: right;
+  color: white;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+  {% endblock %}
+  
